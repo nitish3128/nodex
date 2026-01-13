@@ -1,0 +1,20 @@
+Initialize the Node.js project:
+
+Bash
+
+npm init -y
+(Creates package.json with default settings).
+
+Install dependencies:
+
+Bash
+
+npm install commander chalk ora fs-extra dotenv
+
+
+Bash
+
+npm link
+
+Run the tool (Testing):
+expressoot "test" 
