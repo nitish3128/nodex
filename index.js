@@ -11,7 +11,7 @@ import 'dotenv/config';
 import 'dotenv/config';
 
 // --- CONFIGURATION ---~
-const API_KEY = "AIzaSyDdmvGDr5jJf3Q2_PHhLPVuWTSV2uTL5nU"; 
+const API_KEY = "here api"; 
 
 const program = new Command();
 
@@ -98,5 +98,6 @@ program
       console.error(chalk.red(error.message));
     }
   });
+
 
 program.parse(process.argv);
