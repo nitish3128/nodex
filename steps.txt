@@ -16,5 +16,6 @@ Bash
 
 npm link
 
-Run the tool (Testing):
+
 expressoot "test" 
+
