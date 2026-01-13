@@ -1,7 +1,7 @@
 import 'dotenv/config';
 
 // ⚠️ PASTE YOUR WORKING KEY HERE
-const API_KEY = "AIzaSyDOEiJodv8ooY-RIblbmMOQOviWXqalzIM"; 
+const API_KEY = "API"; 
 
 async function listModels() {
   const url = `https://generativelanguage.googleapis.com/v1beta/models?key=${API_KEY}`;
@@ -25,5 +25,6 @@ async function listModels() {
     console.error("Network Error:", error);
   }
 }
+
 
 listModels();
