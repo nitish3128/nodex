@@ -7,10 +7,8 @@ import fs from 'fs-extra';
 import path from 'path';
 import 'dotenv/config';
 
-// Load variables from .env file
-import 'dotenv/config';
 
-// --- CONFIGURATION ---~
+import 'dotenv/config';
 const API_KEY = "here api"; 
 
 const program = new Command();
@@ -26,8 +24,7 @@ program
     const spinner = ora(`Asking Gemini (Directly) to build: "${prompt}"...`).start();
 
     try {
-      // 1. Construct the Payload
-      // We are sending this manually, just like a browser sends data.
+    
       const payload = {
         contents: [{
           parts: [{
@@ -45,8 +42,6 @@ program
         }]
       };
 
-      // 2. Call the API using 'fetch' (No SDK needed)
-      // We use 'gemini-pro' because it is the most stable model globally.
       const response = await fetch(
         `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key=${API_KEY}`,
         {
@@ -56,7 +51,6 @@ program
         }
       );
 
-      // 3. Handle Errors Manually
       if (!response.ok) {
         const errorText = await response.text();
         throw new Error(`Google API Error: ${response.status} ${response.statusText}\nDetails: ${errorText}`);
@@ -64,13 +58,13 @@ program
 
       const data = await response.json();
       
-      // 4. Extract the Text
+    
       const generatedText = data.candidates[0].content.parts[0].text;
       
-      // Clean up markdown if Gemini adds it (```json ... ```)
+    
       const cleanJson = generatedText.replace(/```json/g, '').replace(/```/g, '');
 
-      // 5. Parse JSON
+   
       let files;
       try {
         files = JSON.parse(cleanJson);
@@ -80,7 +74,7 @@ program
 
       spinner.text = 'Writing files to disk...';
 
-      // 6. Create Files
+     
       if (!fs.existsSync(outputDir)) {
         fs.mkdirSync(outputDir, { recursive: true });
       }
@@ -109,11 +103,4 @@ program.parse(process.argv);
 //npm link
 //expressoot "test"
 
-//*[AIzaS##yCgnyLlE_UMwUFE#############BnH0diEIpE90_TcorxE]
-//*[AIzaSyAw5q0DnrZ6Q-######ZEelR4vrn23pNB160vVXc]
-//*[AIzaSyDTH1#####xObC6qHHM1n_s34iORYCTNWUpw_Z4]
-//*[AIzaSyDC-3ULB######FP25n62z2z_UMwaAjX-HLVeocA]
 
-
-//[AIzaSyD-BYXBvNlyEz#####pjQ-DGHLEz1xvSV2FNxeU]*
-//[AIzaSyArG50f5nu_z1BS#######AqgN7a-TthwUzWe1myY]*
